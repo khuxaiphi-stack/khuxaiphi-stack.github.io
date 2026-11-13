@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huzaifa Ahmed — MSP Runbooks &amp; L1 Documentation</title>
+  <meta name="description" content="Turn senior engineer Looms into clean, PII-sanitized L1 helpdesk runbooks. Zero tenant access required." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    
+    <header>
+      <div class="logo">HUZAIFA AHMED</div>
+      <div class="tag">TECHNICAL RUNBOOK SPECIALIST &middot; MSP SERVICE DESKS</div>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="kicker">00 / Overview &middot; Zero-Access Documentation</div>
+      <h1>Zero-access documentation for IT service teams.</h1>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn">Test 1 Video Free &rarr;</a>
+        <a href="#sample" class="btn btn-secondary">Review Sample Runbook</a>
+      </div>
+
+
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="sec-head">
+      <div class="sec-title">01 / Workflow</div>
+      <div class="sec-tag">ASYNC &middot; REPEATABLE</div>
+    </div>
+
+    <div class="rule-table">
+      <div class="row">
+        <div class="row-num">01/</div>
+        <div class="row-title">Async Capture</div>
+        <div class="row-desc">Engineers record standard workflows via Loom, Teams, or ShareX as they solve tickets—no interviews or prep required.</div>
+      </div>
+      <div class="row">
+        <div class="row-num">02/</div>
+        <div class="row-title">Instructional QA</div>
+        <div class="row-desc">All client PII stripped. PowerShell commands, Entra ID groups, and UI blades manually validated against current portals.</div>
+      </div>
+      <div class="row">
+        <div class="row-num">03/</div>
+        <div class="row-title">Ready for L1</div>
+        <div class="row-desc">Structured checklists, ticket verification gates, and PSA closure blocks drop straight into your tenant runbooks.</div>
+      </div>
+    </div>
+
+    <!-- SAMPLE (STARTS ON BEFORE, DETAILS IN AFTER) -->
+    <div class="sec-head" id="sample">
+      <div class="sec-title">02 / Transformation Sample</div>
+      <div class="sec-tag">SOP-M365-001</div>
+    </div>
+
+    <div class="spec-box">
+      <div class="spec-header">
+        <div>
+          <span style="font-family:var(--mono);font-size:0.8rem;font-weight:700;">SPECIFICATION: CLIENT NEW USER PROVISIONING</span>
+        </div>
+        <div class="tabs">
+          <button class="tab-btn active" id="btn-before" onclick="setSample('before', this)">1. Before (Raw Loom)</button>
+          <button class="tab-btn" id="btn-after" onclick="setSample('after', this)">2. After (L1 Runbook)</button>
+        </div>
+      </div>
+
+      <!-- BEFORE PANE (DEFAULT ACTIVE) -->
+      <div id="pane-before" class="pane active">
+        <p style="font-family:var(--mono);font-size:0.75rem;color:var(--muted);margin-bottom:10px;">
+          RAW 4-MINUTE LOOM TRANSCRIPT &middot; L3 SENIOR ENGINEER:
+        </p>
+        <div class="quote-box">
+          "Hey team, recording a quick screen share while I set up this new starter for Apex Legal so L1 stops escalating these. First thing—check the ticket in HaloPSA. Do not create an account just because an employee emailed in; check the Client Portal notes in Hudu and make sure Sarah Jenkins (their Practice Manager) approved it, and check if they're cloud-only—don't do this in M365 if they're Hybrid AD synced! Also check if they have a spare Business Premium seat in Pax8, or add one and log it for billing... Okay, once you're in their tenant via Partner Center GDAP—or CIPP—go to Active Users and add the user. Make sure you pick @apexlegal.com and NOT the .onmicrosoft.com fallback domain—somebody did that on Tuesday and broke their email routing... Keep them as a standard user, and under profile info, fill in their Job Title, Department, and Manager so their dynamic groups and signature tool pull it right. Next, wait about two minutes for the Exchange mailbox to provision—while that's spinning up, jump into Entra ID and put them in SG-All-Staff and SG-ConditionalAccess-MFA-Users. Never turn on legacy Per-User MFA! Once Exchange finishes, add them to the Reception shared mailbox with Full Access and Send As—and if it's a high-volume mailbox they don't want automapped, use PowerShell Add-MailboxPermission -AutoMapping $false. Last step, put the temp password in a 7-day OneTimeSecret link and email it to Sarah, paste the QA checklist in Halo internal notes, update billing, and close the ticket."
+        </div>
+        <button type="button" class="btn" style="padding:8px 16px;font-size:0.82rem;" onclick="document.getElementById('btn-after').click()">
+          Inspect L1 Runbook Output &rarr;
+        </button>
+      </div>
+
+      <!-- AFTER PANE (EXPANDED DETAIL) -->
+      <div id="pane-after" class="pane">
+        <div class="sop-meta-grid">
+          <div><span>Document ID</span><strong>SOP-M365-001</strong></div>
+          <div><span>Target Role</span><strong>Tier 1 Helpdesk</strong></div>
+          <div><span>GDAP Access</span><strong>User, Exchange, Groups Admin</strong></div>
+          <div><span>Platforms</span><strong>HaloPSA, M365, Entra ID, CIPP</strong></div>
+        </div>
+
+        <div class="sop-section">
+          <div class="sop-section-title"><span class="tag">01</span> Pre-Flight Checklist (Stop &amp; Verify in PSA First)</div>
+          <ul class="sop-list">
+            <li><strong>Authorized PoC Approval:</strong> Confirm written approval on the HaloPSA ticket from the client's designated PoC listed in the Hudu Client Portal.</li>
+            <li><strong>Directory Sync Check:</strong> Confirm tenant is Cloud-Only. <em>If Hybrid AD synced, STOP and route to on-prem AD onboarding SOP.</em></li>
+            <li><strong>License Seat Check:</strong> Audit available <em>M365 Business Premium</em> seats in Pax8/M365. If <code>0</code>, procure 1 seat and log to ticket billing.</li>
+          </ul>
+        </div>
+
+        <div class="sop-section">
+          <div class="sop-section-title"><span class="tag">02</span> Step-by-Step Execution (PII Sanitized)</div>
+          <div class="sop-steps">
+            <div class="step-item">
+              <strong>Step 2.1 — User Provisioning &amp; Directory Attributes (M365 Admin Center)</strong>
+              <ol>
+                <li>Open client tenant via <strong>Partner Center (GDAP)</strong> or <strong>CIPP</strong> &rarr; <strong>Users</strong> &rarr; <strong>Active users</strong> &rarr; <strong>Add a user</strong>.</li>
+                <li>Enter First/Last Name and ensure primary domain <code>@[Client_Primary_Domain]</code> is selected.</li>
+                <li>Assign <strong>Microsoft 365 Business Premium</strong>, assign role as <strong>Standard User</strong>, and populate <strong>Job Title, Department, and Manager</strong>.</li>
+              </ol>
+              <div class="warn-callout">
+                <strong>CRITICAL QA:</strong> Never leave domain dropdown on <code>.onmicrosoft.com</code>—breaks external mail routing and UPN identity.
+              </div>
+            </div>
+
+            <div class="step-item">
+              <strong>Step 2.2 — Enforce Conditional Access MFA (Microsoft Entra ID)</strong>
+              <ol>
+                <li>While Exchange Online provisions the mailbox (~2 mins), open <strong>Microsoft Entra Admin Center</strong> &rarr; <strong>Users</strong> &rarr; Select user &rarr; <strong>Groups</strong>.</li>
+                <li>Add user to <code>SG-All-Staff</code> and <code>SG-ConditionalAccess-MFA-Users</code>. <em>Never enable legacy Per-User MFA.</em></li>
+              </ol>
+            </div>
+
+            <div class="step-item">
+              <strong>Step 2.3 — Exchange Shared Mailbox Delegation (After 2-Min Provisioning)</strong>
+              <ol>
+                <li>Confirm the user's Exchange Online mailbox is active, then grant <strong>Full Access</strong> and <strong>Send As</strong> on the requested shared mailbox (e.g., <code>[Shared_Mailbox]</code>).</li>
+                <li>For high-volume mailboxes where Outlook automapping must be suppressed, run:</li>
+              </ol>
+              <div class="code-box">Add-MailboxPermission -Identity "shared@[Client_Primary_Domain]" -User "newuser@[Client_Primary_Domain]" -AccessRights FullAccess -AutoMapping $false
+Add-RecipientPermission -Identity "shared@[Client_Primary_Domain]" -Trustee "newuser@[Client_Primary_Domain]" -AccessRights SendAs -Confirm:$false</div>
+            </div>
+
+            <div class="step-item">
+              <strong>Step 2.4 — Encrypted Credential Delivery</strong>
+              <ol>
+                <li>Generate an expiring 7-day <strong>OneTimeSecret</strong> link containing the temporary password.</li>
+                <li>Email the onboarding details + link to the <strong>Authorized PoC</strong> (never send passwords in plain-text ticket replies).</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="sop-section">
+          <div class="sop-section-title"><span class="tag">03</span> PSA Ticket Closure Verification Block</div>
+          <div class="code-box">=== [QA VERIFICATION: SOP-M365-001] ===
+1. Authorized PoC Verified: [YES] (Approved by: [Authorized_PoC])
+2. Primary Domain Confirmed (Not .onmicrosoft.com): [YES]
+3. CSP/Pax8 Seat Added &amp; Logged for Billing: [N/A - Spare | YES - +1 Seat]
+4. Profile Attributes (Title, Dept, Manager) Populated: [YES]
+5. Added to Conditional Access MFA Group (No Legacy MFA): [YES]
+6. Shared Mailboxes Configured (AutoMapping Verified): [YES / N/A]
+7. Password Sent via Expiring OneTimeSecret Link: [YES]
+=======================================</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRICING TABLE -->
+    <div class="sec-head">
+      <div class="sec-title">03 / Engagement Tiers</div>
+      <div class="sec-tag">FIXED-FEE &middot; INVOICING VIA WISE / PAYONEER</div>
+    </div>
+
+    <div class="pricing-table">
+      <div class="p-row">
+        <div class="p-name">Test Drive</div>
+        <div class="p-cost">$0</div>
+        <div class="p-desc">1 raw video (up to 8 mins) delivered within 48h to evaluate formatting and accuracy.</div>
+        <div><a href="#contact" class="btn btn-secondary" style="padding:8px 14px;font-size:0.8rem;" onclick="setTier('Free 1-Video Test Drive ($0)')">Send Video</a></div>
+      </div>
+      <div class="p-row" style="background:rgba(255,255,255,0.25);">
+        <div class="p-name">5-SOP Pilot</div>
+        <div class="p-cost">$400</div>
+        <div class="p-desc">Top 5 repeat escalation workflows. Delivered in 7 days with full PSA QA closure blocks and 7-day revision guarantee.</div>
+        <div><a href="#contact" class="btn" style="padding:8px 14px;font-size:0.8rem;" onclick="setTier('$400 Paid Pilot (5 SOPs)')">Book Pilot</a></div>
+      </div>
+      <div class="p-row">
+        <div class="p-name">Monthly Engine</div>
+        <div class="p-cost">$950<span style="font-size:0.75rem;font-weight:normal;">/mo</span></div>
+        <div class="p-desc">Up to 12 new SOPs/mo from ongoing engineer screen recordings + quarterly M365 UI drift updates.</div>
+        <div><a href="#contact" class="btn btn-secondary" style="padding:8px 14px;font-size:0.8rem;" onclick="setTier('$950/mo Retainer')">Inquire</a></div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="sec-head" id="contact">
+      <div class="sec-title">04 / Start a Pilot</div>
+      <div class="sec-tag">DIRECT INQUIRY</div>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <p>
+          <strong>Huzaifa Ahmed</strong><br />
+          B.Sc. in Computer Science &middot; First-Level IT Support Specialist &middot; ICT Instructor &middot; Visual Data Validator.
+        </p>
+        <p>
+          I work directly with MSP owners and Service Delivery Managers in the UK, US, and Canada to eliminate ticket escalation bottlenecks.
+        </p>
+        <p style="font-family:var(--mono);font-size:0.8rem;">
+          DIRECT EMAIL:<br />
+          <a href="mailto:nexxoraworks@gmail.com" style="color:var(--text);font-weight:700;text-decoration:underline;">nexxoraworks@gmail.com</a>
+        </p>
+      </div>
+
+      <form onsubmit="handleForm(event)">
+        <div>
+          <label for="name">Name &amp; MSP Company</label>
+          <input id="name" type="text" placeholder="Alex Morgan — Apex IT" required />
+        </div>
+        <div>
+          <label for="email">Work Email</label>
+          <input id="email" type="email" placeholder="alex@company.com" required />
+        </div>
+        <div>
+          <label for="tier">Selected Engagement</label>
+          <select id="tier">
+            <option value="Free 1-Video Test Drive ($0)">Free 1-Video Test Drive ($0)</option>
+            <option value="$400 Paid Pilot (5 SOPs)">$400 Paid Pilot (5 SOPs)</option>
+            <option value="$950/mo Retainer">$950/mo Retainer</option>
+          </select>
+        </div>
+        <div>
+          <label for="notes">Notes / Documentation Tool</label>
+          <textarea id="notes" rows="2" placeholder="e.g. IT Glue / Hudu / HaloPSA, or NDA request"></textarea>
+        </div>
+        <div class="form-btn-row">
+          <button type="submit" class="btn" style="padding:10px 18px;">Send Email</button>
+          <button type="button" class="btn btn-secondary" style="padding:10px 16px;" onclick="copyForm()">Copy Text</button>
+        </div>
+        <div id="copy-status" class="copy-status">Copied to clipboard. Paste into your email or LinkedIn.</div>
+      </form>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>&copy; 2026 HUZAIFA AHMED &middot; MSP RUNBOOK SPECIALIST</div>
+      <div>NEXXORAWORKS@GMAIL.COM</div>
+    </footer>
+
+  </div>
+
+  <script>
+    function setSample(mode, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('pane-' + mode).classList.add('active');
+    }
+
+    function setTier(val) {
+      document.getElementById('tier').value = val;
+    }
+
+    function composePayload() {
+      const name = document.getElementById('name').value.trim() || '[Name / MSP]';
+      const email = document.getElementById('email').value.trim() || '[Email]';
+      const tier = document.getElementById('tier').value;
+      const notes = document.getElementById('notes').value.trim() || 'None';
+      return {
+        subject: `MSP Runbook Inquiry: ${tier} — ${name}`,
+        body: `Hi Huzaifa,\n\nName / MSP: ${name}\nEmail: ${email}\nOption: ${tier}\nNotes: ${notes}`
+      };
+    }
+
+    function handleForm(e) {
+      e.preventDefault();
+      const p = composePayload();
+      window.location.href = `mailto:nexxoraworks@gmail.com?subject=${encodeURIComponent(p.subject)}&body=${encodeURIComponent(p.body)}`;
+    }
+
+    function copyForm() {
+      const p = composePayload();
+      navigator.clipboard.writeText(`${p.subject}\n\n${p.body}`).then(() => {
+        const el = document.getElementById('copy-status');
+        el.style.display = 'block';
+        setTimeout(() => { el.style.display = 'none'; }, 3000);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mockup 1: Dark Slate & Monospace (Linear / Dev-Tool Style)</title>
+  <style>
+    :root {
+      --bg: #090a0f;
+      --card: #11131a;
+      --border: #232735;
+      --accent: #3b82f6;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --mono: ui-monospace, monospace;
+      --sans: Inter, -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; padding: 40px 20px; }
+    .wrap { max-width: 860px; margin: 0 auto; }
+    .nav { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 20px; margin-bottom: 60px; }
+    .logo { font-family: var(--mono); font-size: 0.9rem; color: #fff; display: flex; align-items: center; gap: 8px; }
+    .status-dot { width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981; }
+    .btn { background: var(--text); color: #000; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; text-decoration: none; border: none; cursor: pointer; }
+    .kicker { font-family: var(--mono); font-size: 0.8rem; color: var(--accent); margin-bottom: 12px; }
+    h1 { font-size: 2.5rem; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; color: #fff; }
+    .desc { font-size: 1.05rem; color: var(--muted); margin-bottom: 30px; max-width: 600px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 50px 0; }
+    .card { background: var(--card); border: 1px solid var(--border); padding: 20px; border-radius: 8px; }
+    .num { font-family: var(--mono); color: var(--accent); font-size: 0.75rem; margin-bottom: 8px; display: block; }
+    .card h3 { font-size: 0.95rem; margin-bottom: 6px; color: #fff; }
+    .card p { font-size: 0.85rem; color: var(--muted); }
+    .sample { border: 1px solid var(--border); background: var(--card); border-radius: 8px; padding: 24px; margin: 40px 0; }
+    .tabs { display: flex; gap: 10px; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+    .tab { font-family: var(--mono); font-size: 0.8rem; background: none; border: none; color: var(--muted); cursor: pointer; padding: 4px 8px; border-radius: 4px; }
+    .tab.active { background: #1e2230; color: #fff; }
+    .code { font-family: var(--mono); font-size: 0.75rem; background: #06070a; padding: 14px; border-radius: 6px; border: 1px solid var(--border); color: #d1d5db; overflow-x: auto; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 40px 0; }
+    .p-card { background: var(--card); border: 1px solid var(--border); padding: 20px; border-radius: 8px; }
+    .p-card.feat { border-color: var(--accent); box-shadow: 0 0 20px rgba(59, 130, 246, 0.15); }
+    .price { font-size: 1.8rem; font-weight: 700; color: #fff; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="nav">
+      <div class="logo"><span class="status-dot"></span> Huzaifa Ahmed // MSP Runbooks</div>
+      <a href="mailto:nexxoraworks@gmail.com" class="btn">Test 1 Video Free</a>
+    </div>
+
+    <div class="kicker">&gt; L1_RUNBOOK_AUTOMATION</div>
+    <h1>Turn senior engineer Looms into L1-ready runbooks.</h1>
+    <p class="desc">Engineers drop raw 5-minute screen recordings. I deliver PII-sanitized, visually verified SOPs for IT Glue, Hudu, and HaloPSA. Zero tenant access required.</p>
+
+    <div class="grid">
+      <div class="card"><span class="num">01. INGEST</span><h3>Raw Screen Recording</h3><p>Share a 3–12m video of any repeat ticket.</p></div>
+      <div class="card"><span class="num">02. SANITIZE</span><h3>Human Verification</h3><p>PII stripped, CLI tested, Entra ID verified.</p></div>
+      <div class="card"><span class="num">03. DELIVER</span><h3>Stack Ready</h3><p>Direct export with PSA ticket closure blocks.</p></div>
+    </div>
+
+    <div class="sample">
+      <div class="tabs">
+        <button class="tab">01_BEFORE_RAW_LOOM.TXT</button>
+        <button class="tab active">02_AFTER_L1_RUNBOOK.MD</button>
+      </div>
+      <div class="code">
+// SOP-M365-001: Client New User Provisioning &amp; Conditional MFA<br/>
+[STATUS: L1-READY] [STACK: HaloPSA | M365 Admin | Entra ID | CIPP]<br/><br/>
+1. PRE-FLIGHT CHECKLIST:<br/>
+   [x] Verify Authorized PoC Approval in Ticket CRM<br/>
+   [x] Audit Pax8 Seat Count (Procure +1 license if available seats == 0)<br/>
+   [x] Stop Gate: Confirm Cloud-Only (If Hybrid AD, route to SOP-AD-002)<br/><br/>
+2. POWERSHELL VERIFICATION SNIPPET:<br/>
+   Add-MailboxPermission -Identity "reception@client.com" -User "user@client.com" -AccessRights FullAccess -AutoMapping $false
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="p-card"><h4>Test Drive</h4><div class="price">$0</div><p style="font-size:0.8rem;color:var(--muted);">1 raw video &middot; 48hr delivery &middot; Full sanitization</p></div>
+      <div class="p-card feat"><h4>5-SOP Pilot</h4><div class="price">$400</div><p style="font-size:0.8rem;color:var(--muted);">Top 5 repeat escalations &middot; 7-day turnaround</p></div>
+      <div class="p-card"><h4>Retainer</h4><div class="price">$950<span style="font-size:0.9rem;font-weight:normal;">/mo</span></div><p style="font-size:0.8rem;color:var(--muted);">12 SOPs/mo &middot; UI Drift Audits</p></div>
+    </div>
+  </div>
+</body>
+</html>
